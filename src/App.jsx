@@ -1,9 +1,11 @@
 import "./App.css";
-
+import Theme from "./components/theme";
 function App() {
   return (
     <>
-      <h1 className="text-3xl">Hello world!!!</h1>
+      <div className="dark:bg-black w-screen h-screen bg-white">
+        <Theme />
+      </div>
     </>
   );
 }
