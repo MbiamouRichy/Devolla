@@ -13,3 +13,10 @@ body {
   font-family: "Roboto", sans-serif;
   transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
+
+@layer utilities {
+  .text-sm {
+    font-size: 13px;
+    font-weight: 500;
+  }
+}

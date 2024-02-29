@@ -47,11 +47,12 @@ export default function Slider() {
           left: `${position.x - 20}px`,
         }}
         onClick={() => handleClick()}
-        className="dark:bg-[#1b1b1f] cursor-pointer bg-white rounded-full p-2 border-[2px] z-20 border-[black] dark:border-[#fff] fixed top-0 left-0"
+        className="dark:bg-[#1b1b1f] transition-all cursor-pointer bg-white rounded-full p-2 z-20 dark:border-[#fff] fixed top-0 left-0"
       >
         {" "}
-        <ArrowRight className="h-10 w-10 dark:text-white"></ArrowRight>
+        <ArrowRight className="h-8 w-8 dark:text-white"></ArrowRight>
       </div>
+
       <div
         onMouseMove={handleMouseMove}
         style={{ transform: `translateX(${actifSlide * -1}00%)` }}
