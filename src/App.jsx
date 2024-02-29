@@ -21,7 +21,18 @@ import Theme from "./components/theme";
 import { Button } from "./components/ui/button";
 
 function App() {
+  let styleflex =
+    "w-full h-full flex flex-row relative transition-all duration-300";
+  let styleGrid =
+    "grid grid-cols-1 lg:grid-cols-2 w-full lg:w-3/5 my-2 gap-2 translate-x-0 lg:gap-4 overflow-y-scroll justify-items-end";
+  let [state, setState] = useState(styleflex);
   let [full, setFull] = useState("shrink");
+  let [styleNav, setStyleNav] = useState("block");
+  const handleStyle = () => {
+    setFull(full == "shrink" ? "full" : "shrink");
+    setState(state == styleflex ? styleGrid : styleflex);
+    setStyleNav(styleNav == "block" ? "hidden" : "block");
+  };
   return (
     <>
       <main className="dark:bg-[#1b1b1f] flex flex-col w-screen h-screen bg-white">
@@ -40,19 +51,19 @@ function App() {
             <Theme />
           </div>
         </div>
-        <div className="flex-grow bg-slate-100 relative rounded-[20px] flex flex-row overflow-hidden mx-2 mb-3">
-          <Slider></Slider>
-          <div className="absolute top-2 left-2 dark:bg-[#1b1b1f] bg-white p-4 flex flex-col rounded-[20px]">
+        <div className="flex-grow bg-slate-100 relative rounded-[20px] flex flex-row lg:justify-end overflow-x-hidden lg:overflow-y-hidden mx-2 mb-3">
+          <Slider styleNav={styleNav} style={state}></Slider>
+          <div className="absolute scale-0 top-0 left-0 lg:top-2 lg:left-2 dark:bg-[#1b1b1f] bg-white p-4 flex flex-col rounded-[20px]">
             <div className="flex flex-row justify-between items-center">
               <div className="flex flex-row items-center px-1 bg-slate-200 text-slate-800 gap-1 rounded-[5px]">
                 <Zap className="h-4 w-4"></Zap>
                 <p className="text-sm">Instant confirmation</p>
               </div>
             </div>
-            <h2 className="dark:text-white text-4xl font-semibold">
+            <h2 className="dark:text-white text-xl lg:text-4xl font-semibold">
               Apartament parkdale
             </h2>
-            <h2 className="text-4xl font-semibold text-[#c1c0c2]">
+            <h2 className="text-xl lg:text-4xl font-semibold text-[#c1c0c2]">
               Melbourne VIC, Australia
             </h2>
 
@@ -139,20 +150,19 @@ function App() {
               Check availability
             </Button>
           </div>
-
-          <Button
-            onClick={() => setFull(full == "shrink" ? "full" : "shrink")}
-            className="rounded-[10px] hover:bg-white bg-white dark:text-white text-sm font-semibold gap-1 dark:bg-[#1b1b1f] inline-flex items-center absolute bottom-2 right-2"
-          >
-            <ShrinkIcon
-              className={`${full == "shrink" ? "block" : "hidden"}`}
-            ></ShrinkIcon>
-            <Maximize
-              className={`${full == "full" ? "block" : "hidden"}`}
-            ></Maximize>
-            10 videos
-          </Button>
         </div>
+        <Button
+          onClick={() => handleStyle()}
+          className="rounded-[10px] hover:bg-white bg-white dark:text-white text-sm font-semibold gap-1 dark:bg-[#1b1b1f] inline-flex items-center absolute bottom-2 right-2 z-30 lg:bottom-4 lg:right-4"
+        >
+          <ShrinkIcon
+            className={`${full == "shrink" ? "block" : "hidden"}`}
+          ></ShrinkIcon>
+          <Maximize
+            className={`${full == "full" ? "block" : "hidden"}`}
+          ></Maximize>
+          10 Photos
+        </Button>
       </main>
     </>
   );

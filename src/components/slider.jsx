@@ -1,5 +1,5 @@
 import { ArrowRight } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import img1 from "../assets/1.jpg";
 import img10 from "../assets/10.jpg";
 import img2 from "../assets/2.jpg";
@@ -23,7 +23,13 @@ let slides = [
   { img: img9 },
   { img: img10 },
 ];
-export default function Slider() {
+// eslint-disable-next-line react/prop-types
+export default function Slider({ style, styleNav }) {
+  let container = useRef(null);
+  useEffect(() => {
+    container.current.style.transform = "translateX(0)";
+  }, [style]);
+
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
   let [actifSlide, setActifSlide] = useState(0);
@@ -47,16 +53,20 @@ export default function Slider() {
           left: `${position.x - 20}px`,
         }}
         onClick={() => handleClick()}
-        className="dark:bg-[#1b1b1f] transition-all cursor-pointer bg-white rounded-full p-2 z-20 dark:border-[#fff] fixed top-0 left-0"
+        className={
+          "dark:bg-[#1b1b1f] hidden transition-all cursor-pointer bg-white rounded-full p-2 z-20 dark:border-[#fff] fixed top-0 left-0 lg:" +
+          styleNav
+        }
       >
         {" "}
         <ArrowRight className="h-8 w-8 dark:text-white"></ArrowRight>
       </div>
 
       <div
+        ref={container}
         onMouseMove={handleMouseMove}
         style={{ transform: `translateX(${actifSlide * -1}00%)` }}
-        className="w-full h-full flex flex-row relative transition-all duration-300"
+        className={style}
       >
         {" "}
         {slides.map((slide, idx) => (
