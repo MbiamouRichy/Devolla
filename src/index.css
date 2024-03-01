@@ -13,10 +13,18 @@ body {
   font-family: "Roboto", sans-serif;
   transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
+/* CSS personnalisé */
 
 @layer utilities {
   .text-sm {
     font-size: 13px;
     font-weight: 500;
+  }
+  .scrollbar::-webkit-scrollbar {
+    background-color: transparent;
+    width: 8px;
+  }
+  .scrollbar::-webkit-scrollbar-thumb {
+    background-color: #202124;
   }
 }

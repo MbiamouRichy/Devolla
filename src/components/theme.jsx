@@ -22,7 +22,7 @@ export default function Theme() {
   return (
     <Button
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      className="relative text-white dark:text-black dark:bg-white bg-[#1b1b1f] rounded-full"
+      className="relative text-white dark:text-black dark:bg-white bg-[#202124] rounded-full"
       variant="outline"
       size="icon"
     >

@@ -27,7 +27,7 @@ let slides = [
 export default function Slider({ style, styleNav }) {
   let container = useRef(null);
   useEffect(() => {
-    container.current.style.transform = "translateX(0)";
+    container.current.style.transform = "translateX(0%)";
   }, [style]);
 
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -49,12 +49,12 @@ export default function Slider({ style, styleNav }) {
 
       <div
         style={{
-          top: `${position.y - 20}px`,
-          left: `${position.x - 20}px`,
+          top: `${position.y - 65}px`,
+          left: `${position.x - 30}px`,
         }}
         onClick={() => handleClick()}
         className={
-          "dark:bg-[#1b1b1f] hidden transition-all cursor-pointer bg-white rounded-full p-2 z-20 dark:border-[#fff] fixed top-0 left-0 lg:" +
+          "dark:bg-[#202124] hidden shadow-black shadow-md cursor-pointer bg-white rounded-full p-2 z-20 dark:border-[#fff] absolute top-0 left-0 lg:block " +
           styleNav
         }
       >
