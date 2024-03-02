@@ -67,8 +67,7 @@ function App() {
               </div>
               <Button
                 onClick={() => setHeight(height == plus ? minus : plus)}
-                className="relative text-white dark:text-black rounded dark:bg-white bg-[#1b1b1f]"
-                variant="outline"
+                className="relative text-slate-800"
                 size="icon"
               >
                 <Minus
